@@ -1,15 +1,21 @@
 name: MonkeyUtils
-version: '1.0-SNAPSHOT'
+version: '1.0'
 main: io.github.Novma.monkeyUtils.MonkeyUtils
 api-version: '1.21'
 
 
 commands:
   cambioaccount:
-    description: "Sovrascrive le proprietà di un player con quelle di un altro player"
-    usage: "Uso: /<command> [daPlayer] [aPlayer]"
-    permission:
-    permission-message: "Non hai i permessi per utilizzare questo comando"
+    description: Sovrascrive le proprietà di un player con quelle di un altro player
+    usage: /<command> [daPlayer] [aPlayer]
+    permission: monkeyutils.cambioaccount
+    permission-message: Non hai i permessi per utilizzare questo comando
 
 
-depend: [Essentials, LuckPerms, SuperiorSkyblock, Vault]
+permissions:
+  monkeyutils.cambioaccount:
+    description: Permesso per utilizzare il cambio account
+    default: op
+
+
+depend: [Essentials, LuckPerms, SuperiorSkyblock, Vault, ODailyQuests, PlayerPoints, PlayerPoints, PlayerKits2, PlayerVaultsX, MonkeyCore]

@@ -1,6 +1,7 @@
 package io.github.Novma.monkeyUtils;
 
 import io.github.Novma.monkeyUtils.command.CambioAccountCommand;
+import io.github.Novma.monkeyUtils.log.FileLogger;
 import io.github.Novma.monkeyUtils.log.Log;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -18,8 +19,11 @@ public final class MonkeyUtils extends JavaPlugin {
         // Check plugins
         if (check()) {
             // Set command executor
-            Objects.requireNonNull(getCommand("cambioaccount")).setExecutor(new CambioAccountCommand());
+            Objects.requireNonNull(getCommand("cambioaccount")).setExecutor(new CambioAccountCommand(this));
         }
+
+        // Setup FileLogger
+        FileLogger.setup(this);
     }
 
     @Override
@@ -44,19 +48,29 @@ public final class MonkeyUtils extends JavaPlugin {
             Log.severe("---Vault non caricato---");
             return false;
         }
-        // Check WorldGuard
-        if (Bukkit.getPluginManager().getPlugin("WorldGuard") == null) {
-            Log.severe("---WorldGuard non caricato---");
-            return false;
-        }
-        // Check Quarry
-        if (Bukkit.getPluginManager().getPlugin("Quarry") == null) {
-            Log.severe("---Quarry non caricato---");
-            return false;
-        }
         // Check ODailyQuests
         if (Bukkit.getPluginManager().getPlugin("ODailyQuests") == null) {
             Log.severe("---ODailyQuests non caricato---");
+            return false;
+        }
+        // Check PlayerPoints
+        if (Bukkit.getPluginManager().getPlugin("PlayerPoints") == null) {
+            Log.severe("---PlayerPoints non caricato---");
+            return false;
+        }
+        // Check PlayerKits2
+        if (Bukkit.getPluginManager().getPlugin("PlayerKits2") == null) {
+            Log.severe("---PlayerKits2 non caricato---");
+            return false;
+        }
+        // Check PlayerVaultsX
+        if (Bukkit.getPluginManager().getPlugin("PlayerVaultsX") == null) {
+            Log.severe("---PlayerVaultsX non caricato---");
+            return false;
+        }
+        // Check MonkeyCore
+        if (Bukkit.getPluginManager().getPlugin("MonkeyCore") == null) {
+            Log.severe("---MonkeyCore non caricato---");
             return false;
         }
 
